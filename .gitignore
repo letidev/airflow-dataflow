@@ -1,3 +1,7 @@
 *.env
 /venv
 .envrc
+
+# ignore all airflow files except the dags
+/airflow/*
+!/airflow/dags
