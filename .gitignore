@@ -1,7 +1,6 @@
 *.env
 /venv
 .envrc
-/kaggle
 /datasets
 
 # ignore all airflow files except the dags
