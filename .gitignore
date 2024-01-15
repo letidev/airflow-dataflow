@@ -2,6 +2,7 @@
 /venv
 .envrc
 /datasets
+*.pyc
 
 # ignore all airflow files except the dags
 /airflow/*

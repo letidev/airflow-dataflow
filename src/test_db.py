@@ -8,7 +8,7 @@ from colors import bcolors
 
 load_dotenv()
 
-mydb = mysql.connector.connect(
+mysql_db = mysql.connector.connect(
     host=os.getenv('MYSQL_HOST'),
     port=os.getenv('MYSQL_PORT'),
     database=os.getenv('MYSQL_DATABASE_NAME'),
@@ -16,7 +16,7 @@ mydb = mysql.connector.connect(
     password=os.getenv('MYSQL_ROOT_PASSWORD')
 )
 
-postgresdb = psycopg2.connect(
+pg_db = psycopg2.connect(
     host=os.getenv('POSTGRES_HOST'),
     port=os.getenv('POSTGRES_PORT'),
     database=os.getenv('POSTGRES_DB'),
@@ -24,5 +24,5 @@ postgresdb = psycopg2.connect(
     password=os.getenv('POSTGRES_PASSWORD')
 )
 
-print(f"{bcolors.OKCYAN}mysql conn - {mydb}{bcolors.ENDC}")
-print(f"{bcolors.FAIL}postgres conn - {postgresdb}{bcolors.ENDC}")
+print(f"{bcolors.OKCYAN}mysql conn - {mysql_db}{bcolors.ENDC}")
+print(f"{bcolors.FAIL}postgres conn - {pg_db}{bcolors.ENDC}")
