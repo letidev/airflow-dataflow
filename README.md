@@ -23,10 +23,15 @@ kaggle datasets download -d thedevastator/netflix-imdb-scores -p ./datasets --un
 In `.env` configure the following variables:
 
 ```
+POSTGRES_HOST=
+POSTGRES_PORT=
 POSTGRES_USER=
 POSTGRES_PASSWORD=
 POSTGRES_DB=
 
+MYSQL_HOST=
+MYSQL_PORT=
+MYSQL_ROOT_USER=
 MYSQL_ROOT_PASSWORD=
 MYSQL_DATABASE_NAME=
 ```
@@ -35,7 +40,7 @@ In `.envrc` configure the following ones:
 
 ```
 # airflow config
-export AIRFLOW_HOME=<I've set this one to the PWD>
+export AIRFLOW_HOME="${PWD}/airflow"
 export AIRFLOW_VERSION=2.8.0
 export PYTHON_VERSION=3.11
 export CONSTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_VERSION}.txt"
@@ -44,3 +49,5 @@ export CONSTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constrai
 export KAGGLE_USERNAME=
 export KAGGLE_KEY=
 ```
+
+Make sure to run `direnv allow` every time you make changes to `.envrc`.
