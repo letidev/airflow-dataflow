@@ -38,7 +38,24 @@ create table imdb_top_1000 (
   primary key (id)
 );
 
+create table netflix_shows_and_movies (
+	id varchar(32) not null unique,
+	title varchar(256),
+	movie_type enum('MOVIE', 'SHOW'),
+	description text,
+	release_year int,
+	age_certification varchar(8),
+	runtime int,
+	imdb_id varchar(32),
+	imdb_score decimal(3, 1),
+	imdb_votes bigint,
+	
+	primary key(id)
+)
+
 
 select * from imdb_movies
 
 select * from imdb_top_1000
+
+select * from netflix_shows_and_movies

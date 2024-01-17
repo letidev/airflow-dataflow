@@ -21,10 +21,6 @@ def csv_to_df(csv_path: str) -> pd.DataFrame:
     return df
 
 
-# netflix_path = os.path.join(
-#     dirname, "../datasets/Netflix TV Shows and Movies.csv")
-
-
 def close(cursor, connection):
     cursor.close()
     print("closed mysql cursor")
@@ -97,5 +93,33 @@ def load_top1000_csv_into_mysql():
     close(cursor, connection)
 
 
+def load_netflix_shows_into_mysql():
+    # get the path to the current file
+    dirname = os.path.dirname(__file__)
+
+    netflix_path = os.path.join(
+        dirname, "../datasets/Netflix TV Shows and Movies.csv")
+
+    df = csv_to_df(netflix_path)
+
+    # we don't need the index column, we have an id column
+    df = df.drop(columns=["index"])
+
+    connection = get_mysql_conn()
+    cursor = connection.cursor()
+
+    for _, row in df.iterrows():
+        # replace all NaN values with None because None can be interpreted by the DB as NULL
+        row = row.replace({np.nan: None})
+
+        values = tuple(row)
+        query = f"insert into netflix_shows_and_movies values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        cursor.execute(query, values)
+
+    connection.commit()
+    close(cursor, connection)
+
+
 # load_movies_csv_into_mysql()
 # load_top1000_csv_into_mysql()
+# load_netflix_shows_into_mysql()
