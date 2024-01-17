@@ -8,6 +8,8 @@ services:
       - POSTGRES_DB=postgres=${POSTGRES_DB}
     ports:
       - ${POSTGRES_PORT}:${POSTGRES_PORT}
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
   
   mysql:
     image: mysql:8.2.0
@@ -17,3 +19,5 @@ services:
       - MYSQL_DATABASE=${MYSQL_DATABASE_NAME}
     ports:
     - ${MYSQL_PORT}:${MYSQL_PORT}
+    volumes:
+    - ./mysql-data:/var/lib/mysql

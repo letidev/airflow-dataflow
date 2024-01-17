@@ -4,6 +4,10 @@
 /datasets
 *.pyc
 
+# docker volumes
+/mysql-data
+/postgres-data
+
 # ignore all airflow files except the dags
 /airflow/*
 !/airflow/dags
