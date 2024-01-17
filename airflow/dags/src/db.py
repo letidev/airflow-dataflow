@@ -3,8 +3,7 @@ import os
 import mysql.connector
 import psycopg2
 from dotenv import load_dotenv
-
-from colors import bcolors
+from src.colors import bcolors
 
 
 def get_mysql_conn():

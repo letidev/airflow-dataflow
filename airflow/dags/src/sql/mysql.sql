@@ -53,9 +53,10 @@ create table netflix_shows_and_movies (
 	primary key(id)
 )
 
+select * from imdb_movies;
+select * from imdb_top_1000;
+select * from netflix_shows_and_movies;
 
-select * from imdb_movies
-
-select * from imdb_top_1000
-
-select * from netflix_shows_and_movies
+drop table imdb_movies; 
+drop table imdb_top_1000; 
+drop table netflix_shows_and_movies; 

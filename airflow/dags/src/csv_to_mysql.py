@@ -3,9 +3,8 @@ import re
 
 import numpy as np
 import pandas as pd
-
-from colors import bcolors
-from db import get_mysql_conn
+from src.colors import bcolors
+from src.db import get_mysql_conn
 
 
 def csv_to_df(csv_path: str) -> pd.DataFrame:
@@ -33,7 +32,7 @@ def load_movies_csv_into_mysql():
     dirname = os.path.dirname(__file__)
 
     # get the path of the csv file relative to the current one
-    movies_path = os.path.join(dirname, "../datasets/imdb_movies.csv")
+    movies_path = os.path.join(dirname, "datasets/imdb_movies.csv")
 
     df = csv_to_df(movies_path)
 
@@ -55,7 +54,7 @@ def load_movies_csv_into_mysql():
         cursor.execute(query, values)
 
     connection.commit()
-    close()
+    close(cursor, connection)
 
 
 def load_top1000_csv_into_mysql():
@@ -63,7 +62,7 @@ def load_top1000_csv_into_mysql():
     dirname = os.path.dirname(__file__)
 
     # get the path of the csv file relative to the current one
-    top1000_path = os.path.join(dirname, "../datasets/imdb_top_1000.csv")
+    top1000_path = os.path.join(dirname, "datasets/imdb_top_1000.csv")
 
     df = csv_to_df(top1000_path)
 
@@ -98,7 +97,7 @@ def load_netflix_shows_into_mysql():
     dirname = os.path.dirname(__file__)
 
     netflix_path = os.path.join(
-        dirname, "../datasets/Netflix TV Shows and Movies.csv")
+        dirname, "datasets/Netflix TV Shows and Movies.csv")
 
     df = csv_to_df(netflix_path)
 
