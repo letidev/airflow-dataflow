@@ -40,6 +40,8 @@ recreate the postgres tables
 
 load mysql tables into postgres (3 parallel tasks for each table)
 
+The idea behind dropping and recreating the tables in each run is that I'm using the same datasets every time, that's why every time I just drop the tables to clear all records and recreate them.
+
 # Python Version
 
 3.11
