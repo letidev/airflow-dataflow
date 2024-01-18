@@ -1,3 +1,45 @@
+# Description
+
+This project simulates a data pipeline by extracting data from CSV datasets and loading it first into a MySQL database and the from the MySQL database int a Postgres database. The datasets are downloaded from kaggle and in this example are 3 movies datasets. The databases are set up in docker containers and airflow and all other packages needed for the project are installed in a python virtual environment.
+
+To start the airflow server, run.
+
+```bash
+airflow standalone
+```
+
+Two dags should appear - one example dag and the `data_flow` dag.
+
+# Data flow dag
+
+The tasks aim to perform everything from start to finish:
+
+download the csvs
+
+⬇️
+
+drop existing mysql tables
+
+⬇️
+
+recreate the mysql tables
+
+⬇️
+
+load csvs into mysql (3 parallel tasks for each dataset)
+
+⬇️
+
+drop the postgres tables
+
+⬇️
+
+recreate the postgres tables
+
+⬇️
+
+load mysql tables into postgres (3 parallel tasks for each table)
+
 # Python Version
 
 3.11
