@@ -4,7 +4,7 @@
 
 # Datasets
 
-The datasets in this project are downloaded through kaggle's API:
+The datasets in this project are downloaded through kaggle's API but not by hand, they are run as bash tasks in airflow. To download them by hand, run the following commands:
 
 ```bash
 kaggle datasets download -d harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows -p ./airflow/dags/src/datasets --unzip
@@ -36,7 +36,7 @@ MYSQL_ROOT_PASSWORD=
 MYSQL_DATABASE_NAME=
 ```
 
-In `.envrc` configure the following ones:
+In `.envrc` configure the following ones. These are used to configure the airflow installation, set up in the environment its home directory and also to configure in the environment kaggle's API username and key which are needed when downloading datasets:
 
 ```
 # airflow config
